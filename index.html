@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/KALIMANTAN_TENGAH_PUBLISH_0.js"></script>
+        <script src="data/KALIMANTAN_SELATAN_PUBLISH_1.js"></script>
+        <script src="data/KALIMANTAN_BARAT_PUBLISH_2.js"></script>
+        <script src="data/JAWA_TIMUR_PUBLISH_3.js"></script>
+        <script src="data/JAWA_TENGAH_PUBLISH_4.js"></script>
+        <script src="data/JAWA_BARAT_PUBLISH_5.js"></script>
+        <script src="data/JAMBI_PUBLISH_6.js"></script>
+        <script src="data/GORONTALO_PUBLISH_7.js"></script>
+        <script src="data/DIY_PUBLISH_8.js"></script>
+        <script src="data/BENGKULU_PUBLISH_9.js"></script>
+        <script src="data/BANTEN_PUBLISH_10.js"></script>
+        <script src="data/BALI_PUBLISH2_11.js"></script>
+        <script src="data/ACEH_PUBLISH_12.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+            highlightLayer.openPopup();
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-18.008071018401463,90.9900711229877],[18.59209687341186,138.2801580276277]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_KALIMANTAN_TENGAH_PUBLISH_0(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_KALIMANTAN_TENGAH_PUBLISH_0_0() {
+            return {
+                pane: 'pane_KALIMANTAN_TENGAH_PUBLISH_0',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,113,72,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_KALIMANTAN_TENGAH_PUBLISH_0');
+        map.getPane('pane_KALIMANTAN_TENGAH_PUBLISH_0').style.zIndex = 400;
+        map.getPane('pane_KALIMANTAN_TENGAH_PUBLISH_0').style['mix-blend-mode'] = 'normal';
+        var layer_KALIMANTAN_TENGAH_PUBLISH_0 = new L.geoJson(json_KALIMANTAN_TENGAH_PUBLISH_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_KALIMANTAN_TENGAH_PUBLISH_0',
+            layerName: 'layer_KALIMANTAN_TENGAH_PUBLISH_0',
+            pane: 'pane_KALIMANTAN_TENGAH_PUBLISH_0',
+            onEachFeature: pop_KALIMANTAN_TENGAH_PUBLISH_0,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_KALIMANTAN_TENGAH_PUBLISH_0_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_KALIMANTAN_TENGAH_PUBLISH_0);
+        map.addLayer(layer_KALIMANTAN_TENGAH_PUBLISH_0);
+        function pop_KALIMANTAN_SELATAN_PUBLISH_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_KALIMANTAN_SELATAN_PUBLISH_1_0() {
+            return {
+                pane: 'pane_KALIMANTAN_SELATAN_PUBLISH_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,113,141,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_KALIMANTAN_SELATAN_PUBLISH_1');
+        map.getPane('pane_KALIMANTAN_SELATAN_PUBLISH_1').style.zIndex = 401;
+        map.getPane('pane_KALIMANTAN_SELATAN_PUBLISH_1').style['mix-blend-mode'] = 'normal';
+        var layer_KALIMANTAN_SELATAN_PUBLISH_1 = new L.geoJson(json_KALIMANTAN_SELATAN_PUBLISH_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_KALIMANTAN_SELATAN_PUBLISH_1',
+            layerName: 'layer_KALIMANTAN_SELATAN_PUBLISH_1',
+            pane: 'pane_KALIMANTAN_SELATAN_PUBLISH_1',
+            onEachFeature: pop_KALIMANTAN_SELATAN_PUBLISH_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_KALIMANTAN_SELATAN_PUBLISH_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_KALIMANTAN_SELATAN_PUBLISH_1);
+        map.addLayer(layer_KALIMANTAN_SELATAN_PUBLISH_1);
+        function pop_KALIMANTAN_BARAT_PUBLISH_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_KALIMANTAN_BARAT_PUBLISH_2_0() {
+            return {
+                pane: 'pane_KALIMANTAN_BARAT_PUBLISH_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,155,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_KALIMANTAN_BARAT_PUBLISH_2');
+        map.getPane('pane_KALIMANTAN_BARAT_PUBLISH_2').style.zIndex = 402;
+        map.getPane('pane_KALIMANTAN_BARAT_PUBLISH_2').style['mix-blend-mode'] = 'normal';
+        var layer_KALIMANTAN_BARAT_PUBLISH_2 = new L.geoJson(json_KALIMANTAN_BARAT_PUBLISH_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_KALIMANTAN_BARAT_PUBLISH_2',
+            layerName: 'layer_KALIMANTAN_BARAT_PUBLISH_2',
+            pane: 'pane_KALIMANTAN_BARAT_PUBLISH_2',
+            onEachFeature: pop_KALIMANTAN_BARAT_PUBLISH_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_KALIMANTAN_BARAT_PUBLISH_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_KALIMANTAN_BARAT_PUBLISH_2);
+        map.addLayer(layer_KALIMANTAN_BARAT_PUBLISH_2);
+        function pop_JAWA_TIMUR_PUBLISH_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_JAWA_TIMUR_PUBLISH_3_0() {
+            return {
+                pane: 'pane_JAWA_TIMUR_PUBLISH_3',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,182,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_JAWA_TIMUR_PUBLISH_3');
+        map.getPane('pane_JAWA_TIMUR_PUBLISH_3').style.zIndex = 403;
+        map.getPane('pane_JAWA_TIMUR_PUBLISH_3').style['mix-blend-mode'] = 'normal';
+        var layer_JAWA_TIMUR_PUBLISH_3 = new L.geoJson(json_JAWA_TIMUR_PUBLISH_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_JAWA_TIMUR_PUBLISH_3',
+            layerName: 'layer_JAWA_TIMUR_PUBLISH_3',
+            pane: 'pane_JAWA_TIMUR_PUBLISH_3',
+            onEachFeature: pop_JAWA_TIMUR_PUBLISH_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_JAWA_TIMUR_PUBLISH_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_JAWA_TIMUR_PUBLISH_3);
+        map.addLayer(layer_JAWA_TIMUR_PUBLISH_3);
+        function pop_JAWA_TENGAH_PUBLISH_4(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_JAWA_TENGAH_PUBLISH_4_0() {
+            return {
+                pane: 'pane_JAWA_TENGAH_PUBLISH_4',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,178,151,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_JAWA_TENGAH_PUBLISH_4');
+        map.getPane('pane_JAWA_TENGAH_PUBLISH_4').style.zIndex = 404;
+        map.getPane('pane_JAWA_TENGAH_PUBLISH_4').style['mix-blend-mode'] = 'normal';
+        var layer_JAWA_TENGAH_PUBLISH_4 = new L.geoJson(json_JAWA_TENGAH_PUBLISH_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_JAWA_TENGAH_PUBLISH_4',
+            layerName: 'layer_JAWA_TENGAH_PUBLISH_4',
+            pane: 'pane_JAWA_TENGAH_PUBLISH_4',
+            onEachFeature: pop_JAWA_TENGAH_PUBLISH_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_JAWA_TENGAH_PUBLISH_4_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_JAWA_TENGAH_PUBLISH_4);
+        map.addLayer(layer_JAWA_TENGAH_PUBLISH_4);
+        function pop_JAWA_BARAT_PUBLISH_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_JAWA_BARAT_PUBLISH_5_0() {
+            return {
+                pane: 'pane_JAWA_BARAT_PUBLISH_5',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,89,137,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_JAWA_BARAT_PUBLISH_5');
+        map.getPane('pane_JAWA_BARAT_PUBLISH_5').style.zIndex = 405;
+        map.getPane('pane_JAWA_BARAT_PUBLISH_5').style['mix-blend-mode'] = 'normal';
+        var layer_JAWA_BARAT_PUBLISH_5 = new L.geoJson(json_JAWA_BARAT_PUBLISH_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_JAWA_BARAT_PUBLISH_5',
+            layerName: 'layer_JAWA_BARAT_PUBLISH_5',
+            pane: 'pane_JAWA_BARAT_PUBLISH_5',
+            onEachFeature: pop_JAWA_BARAT_PUBLISH_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_JAWA_BARAT_PUBLISH_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_JAWA_BARAT_PUBLISH_5);
+        map.addLayer(layer_JAWA_BARAT_PUBLISH_5);
+        function pop_JAMBI_PUBLISH_6(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_JAMBI_PUBLISH_6_0() {
+            return {
+                pane: 'pane_JAMBI_PUBLISH_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,113,72,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_JAMBI_PUBLISH_6');
+        map.getPane('pane_JAMBI_PUBLISH_6').style.zIndex = 406;
+        map.getPane('pane_JAMBI_PUBLISH_6').style['mix-blend-mode'] = 'normal';
+        var layer_JAMBI_PUBLISH_6 = new L.geoJson(json_JAMBI_PUBLISH_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_JAMBI_PUBLISH_6',
+            layerName: 'layer_JAMBI_PUBLISH_6',
+            pane: 'pane_JAMBI_PUBLISH_6',
+            onEachFeature: pop_JAMBI_PUBLISH_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_JAMBI_PUBLISH_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_JAMBI_PUBLISH_6);
+        map.addLayer(layer_JAMBI_PUBLISH_6);
+        function pop_GORONTALO_PUBLISH_7(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_GORONTALO_PUBLISH_7_0() {
+            return {
+                pane: 'pane_GORONTALO_PUBLISH_7',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(232,113,141,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_GORONTALO_PUBLISH_7');
+        map.getPane('pane_GORONTALO_PUBLISH_7').style.zIndex = 407;
+        map.getPane('pane_GORONTALO_PUBLISH_7').style['mix-blend-mode'] = 'normal';
+        var layer_GORONTALO_PUBLISH_7 = new L.geoJson(json_GORONTALO_PUBLISH_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_GORONTALO_PUBLISH_7',
+            layerName: 'layer_GORONTALO_PUBLISH_7',
+            pane: 'pane_GORONTALO_PUBLISH_7',
+            onEachFeature: pop_GORONTALO_PUBLISH_7,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_GORONTALO_PUBLISH_7_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_GORONTALO_PUBLISH_7);
+        map.addLayer(layer_GORONTALO_PUBLISH_7);
+        function pop_DIY_PUBLISH_8(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_DIY_PUBLISH_8_0() {
+            return {
+                pane: 'pane_DIY_PUBLISH_8',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,155,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_DIY_PUBLISH_8');
+        map.getPane('pane_DIY_PUBLISH_8').style.zIndex = 408;
+        map.getPane('pane_DIY_PUBLISH_8').style['mix-blend-mode'] = 'normal';
+        var layer_DIY_PUBLISH_8 = new L.geoJson(json_DIY_PUBLISH_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_DIY_PUBLISH_8',
+            layerName: 'layer_DIY_PUBLISH_8',
+            pane: 'pane_DIY_PUBLISH_8',
+            onEachFeature: pop_DIY_PUBLISH_8,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_DIY_PUBLISH_8_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_DIY_PUBLISH_8);
+        map.addLayer(layer_DIY_PUBLISH_8);
+        function pop_BENGKULU_PUBLISH_9(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_BENGKULU_PUBLISH_9_0() {
+            return {
+                pane: 'pane_BENGKULU_PUBLISH_9',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,182,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BENGKULU_PUBLISH_9');
+        map.getPane('pane_BENGKULU_PUBLISH_9').style.zIndex = 409;
+        map.getPane('pane_BENGKULU_PUBLISH_9').style['mix-blend-mode'] = 'normal';
+        var layer_BENGKULU_PUBLISH_9 = new L.geoJson(json_BENGKULU_PUBLISH_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BENGKULU_PUBLISH_9',
+            layerName: 'layer_BENGKULU_PUBLISH_9',
+            pane: 'pane_BENGKULU_PUBLISH_9',
+            onEachFeature: pop_BENGKULU_PUBLISH_9,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_BENGKULU_PUBLISH_9_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_BENGKULU_PUBLISH_9);
+        map.addLayer(layer_BENGKULU_PUBLISH_9);
+        function pop_BANTEN_PUBLISH_10(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_BANTEN_PUBLISH_10_0() {
+            return {
+                pane: 'pane_BANTEN_PUBLISH_10',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,178,151,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BANTEN_PUBLISH_10');
+        map.getPane('pane_BANTEN_PUBLISH_10').style.zIndex = 410;
+        map.getPane('pane_BANTEN_PUBLISH_10').style['mix-blend-mode'] = 'normal';
+        var layer_BANTEN_PUBLISH_10 = new L.geoJson(json_BANTEN_PUBLISH_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BANTEN_PUBLISH_10',
+            layerName: 'layer_BANTEN_PUBLISH_10',
+            pane: 'pane_BANTEN_PUBLISH_10',
+            onEachFeature: pop_BANTEN_PUBLISH_10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_BANTEN_PUBLISH_10_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_BANTEN_PUBLISH_10);
+        map.addLayer(layer_BANTEN_PUBLISH_10);
+        function pop_BALI_PUBLISH2_11(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_BALI_PUBLISH2_11_0() {
+            return {
+                pane: 'pane_BALI_PUBLISH2_11',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,89,137,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_BALI_PUBLISH2_11');
+        map.getPane('pane_BALI_PUBLISH2_11').style.zIndex = 411;
+        map.getPane('pane_BALI_PUBLISH2_11').style['mix-blend-mode'] = 'normal';
+        var layer_BALI_PUBLISH2_11 = new L.geoJson(json_BALI_PUBLISH2_11, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BALI_PUBLISH2_11',
+            layerName: 'layer_BALI_PUBLISH2_11',
+            pane: 'pane_BALI_PUBLISH2_11',
+            onEachFeature: pop_BALI_PUBLISH2_11,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_BALI_PUBLISH2_11_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_BALI_PUBLISH2_11);
+        map.addLayer(layer_BALI_PUBLISH2_11);
+        function pop_ACEH_PUBLISH_12(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_ACEH_PUBLISH_12_0() {
+            return {
+                pane: 'pane_ACEH_PUBLISH_12',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(231,113,72,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_ACEH_PUBLISH_12');
+        map.getPane('pane_ACEH_PUBLISH_12').style.zIndex = 412;
+        map.getPane('pane_ACEH_PUBLISH_12').style['mix-blend-mode'] = 'normal';
+        var layer_ACEH_PUBLISH_12 = new L.geoJson(json_ACEH_PUBLISH_12, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ACEH_PUBLISH_12',
+            layerName: 'layer_ACEH_PUBLISH_12',
+            pane: 'pane_ACEH_PUBLISH_12',
+            onEachFeature: pop_ACEH_PUBLISH_12,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_ACEH_PUBLISH_12_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_ACEH_PUBLISH_12);
+        map.addLayer(layer_ACEH_PUBLISH_12);
+        map.createPane('pane_GoogleMaps_13');
+        map.getPane('pane_GoogleMaps_13').style.zIndex = 413;
+        var layer_GoogleMaps_13 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleMaps_13',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_GoogleMaps_13;
+        map.addLayer(layer_GoogleMaps_13);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{"Google Maps": layer_GoogleMaps_13,'<img src="legend/ACEH_PUBLISH_12.png" /> ACEH_PUBLISH': layer_ACEH_PUBLISH_12,'<img src="legend/BALI_PUBLISH2_11.png" /> BALI_PUBLISH2': layer_BALI_PUBLISH2_11,'<img src="legend/BANTEN_PUBLISH_10.png" /> BANTEN_PUBLISH': layer_BANTEN_PUBLISH_10,'<img src="legend/BENGKULU_PUBLISH_9.png" /> BENGKULU_PUBLISH': layer_BENGKULU_PUBLISH_9,'<img src="legend/DIY_PUBLISH_8.png" /> DIY_PUBLISH': layer_DIY_PUBLISH_8,'<img src="legend/GORONTALO_PUBLISH_7.png" /> GORONTALO_PUBLISH': layer_GORONTALO_PUBLISH_7,'<img src="legend/JAMBI_PUBLISH_6.png" /> JAMBI_PUBLISH': layer_JAMBI_PUBLISH_6,'<img src="legend/JAWA_BARAT_PUBLISH_5.png" /> JAWA_BARAT_PUBLISH': layer_JAWA_BARAT_PUBLISH_5,'<img src="legend/JAWA_TENGAH_PUBLISH_4.png" /> JAWA_TENGAH_PUBLISH': layer_JAWA_TENGAH_PUBLISH_4,'<img src="legend/JAWA_TIMUR_PUBLISH_3.png" /> JAWA_TIMUR_PUBLISH': layer_JAWA_TIMUR_PUBLISH_3,'<img src="legend/KALIMANTAN_BARAT_PUBLISH_2.png" /> KALIMANTAN_BARAT_PUBLISH': layer_KALIMANTAN_BARAT_PUBLISH_2,'<img src="legend/KALIMANTAN_SELATAN_PUBLISH_1.png" /> KALIMANTAN_SELATAN_PUBLISH': layer_KALIMANTAN_SELATAN_PUBLISH_1,'<img src="legend/KALIMANTAN_TENGAH_PUBLISH_0.png" /> KALIMANTAN_TENGAH_PUBLISH': layer_KALIMANTAN_TENGAH_PUBLISH_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        map.addControl(new L.Control.Search({
+            layer: layer_BENGKULU_PUBLISH_9,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'kabupaten'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        </script>
+    </body>
+</html>
